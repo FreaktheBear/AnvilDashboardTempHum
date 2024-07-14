@@ -1,4 +1,4 @@
-from ._anvil_designer import ReportsTemplate
+from ._anvil_designer import TemperatureTemplate
 from anvil import *
 import plotly.graph_objects as go
 import anvil.server
@@ -7,13 +7,13 @@ import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
 
-class Reports(ReportsTemplate):
+class Temperature(TemperatureTemplate):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
     # Any code you write here will run before the form opens.
 
-    #Populate plot_1 with dummy data. All three Bar charts will be added to the same figure
+    # Populate plot_1 with temperature data.
     self.plot_1.data = [
       go.Bar(
         x=[2019, 2020, 2021, 2022, 2023],

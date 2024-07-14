@@ -24,7 +24,7 @@ class Frame(FrameTemplate):
     self.sales_page_link.background = app.theme_colors['Primary Container']
     
 
-  def sales_page_link_click(self, **event_args):
+  def temp_page_link_click(self, **event_args):
     """This method is called when the link is clicked"""
     #Clear the content panel and add the Sales Form
     self.content_panel.clear()
