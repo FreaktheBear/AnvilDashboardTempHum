@@ -12,34 +12,14 @@ class Temperature(TemperatureTemplate):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
     # Any code you write here will run before the form opens.
+    anvil.users.login_with_form()
 
-    # Populate plot_1 with temperature data.
-    self.plot_1.data = [
-      go.Bar(
-        x=[2019, 2020, 2021, 2022, 2023],
-        y=[510, 620, 687, 745, 881],
-        name="Europe"
-    ),
-      go.Bar(
-        x=[2019, 2020, 2021, 2022, 2023],
-        y=[733, 880, 964, 980, 1058],
-        name="Americas"
-    ),
-      go.Bar(
-        x=[2019, 2020, 2021, 2022, 2023],
-        y=[662, 728, 794, 814, 906],
-        name="Asia"
-    )
-    ]
+  def timer_1_tick(self, **event_args):
+    """This method is called Every [interval] seconds. Does not trigger if [interval] is 0."""
+    data = anvil.server.call_s('get_data')
 
-    #Return the figure from the server to populate plot_2
-    self.plot_2.figure = anvil.server.call('return_bar_charts')
+    self.temp_plot.data = go.Scatter(x = [r['Time'] for r in data], y = [r['Temperature'] for r in data], fill = 'tozeroy')
+    self.hum_plot.data = go.Scatter(x = [r['Time'] for r in data], y = [r['Humidity'] for r in data], fill = 'tozeroy')
 
-    self.plot_3.data = [
-      go.Pie(
-        labels=["Mobile", "Tablet", "Desktop"],
-        values=[2650, 755, 9525]
-      )
-    ]
     
 
