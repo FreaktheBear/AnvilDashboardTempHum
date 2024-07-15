@@ -14,14 +14,14 @@ class Frame(FrameTemplate):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
     #Present users with a login form with just one line of code:
-    #anvil.users.login_with_form()
+    anvil.users.login_with_form()
 
     #Set the Plotly plots template to match the theme of the app
     Plot.templates.default = "rally"
     #When the app starts up, the Temperature form will be added to the page
     self.content_panel.add_component(Temperature())
-    #Change the color of the temp_page_link to indicate that the Sales page has been selected
-    self.sales_page_link.background = app.theme_colors['Primary Container']
+    #Change the color of the temp_page_link to indicate that the Temperature page has been selected
+    self.temp_page_link.background = app.theme_colors['Primary Container']
     
 
   def temp_page_link_click(self, **event_args):
@@ -30,8 +30,8 @@ class Frame(FrameTemplate):
     self.content_panel.clear()
     self.content_panel.add_component(Temperature())
     #Change the color of the temp_page_link to indicate that the Temperature page has been selected
-    self.sales_page_link.background = app.theme_colors['Primary Container']
-    self.reports_page_link.background = "transparent"
+    self.temp_page_link.background = app.theme_colors['Primary Container']
+    self.hum_page_link.background = "transparent"
 
   def hum_page_link_click(self, **event_args):
     """This method is called when the link is clicked"""
@@ -39,8 +39,8 @@ class Frame(FrameTemplate):
     self.content_panel.clear()
     self.content_panel.add_component(Humidity())
     #Change the color of the hum_page_link to indicate that the Humidity page has been selected
-    self.reports_page_link.background = app.theme_colors['Primary Container']
-    self.sales_page_link.background = "transparent"
+    self.hum_page_link.background = app.theme_colors['Primary Container']
+    self.temp_page_link.background = "transparent"
 
   #If using the Users service, uncomment this code to log out the user:
   def signout_link_click(self, **event_args):

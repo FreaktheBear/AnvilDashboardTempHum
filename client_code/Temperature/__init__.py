@@ -12,14 +12,13 @@ class Temperature(TemperatureTemplate):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
     # Any code you write here will run before the form opens.
-    anvil.users.login_with_form()
 
-  def timer_1_tick(self, **event_args):
+  def timer_2t_temp(self, **event_args):
     """This method is called Every [interval] seconds. Does not trigger if [interval] is 0."""
     data = anvil.server.call_s('get_data')
 
     self.temp_plot.data = go.Scatter(x = [r['Time'] for r in data], y = [r['Temperature'] for r in data], fill = 'tozeroy')
-    self.hum_plot.data = go.Scatter(x = [r['Time'] for r in data], y = [r['Humidity'] for r in data], fill = 'tozeroy')
+    #self.hum_plot.data = go.Scatter(x = [r['Time'] for r in data], y = [r['Humidity'] for r in data], fill = 'tozeroy')
 
     
 
