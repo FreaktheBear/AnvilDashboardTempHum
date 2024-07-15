@@ -15,7 +15,7 @@ from datetime import datetime
 #
 @anvil.server.callable
 def record_reading(temperature, humidity):
-  app_tables.readings.add_row(Time=nztime, Temperature=temperature, Humidity=humidity)
+  app_tables.readings.add_row(Temperature=temperature, Humidity=humidity, Time=datetime.now())
 
 @anvil.server.callable
 def get_data():
