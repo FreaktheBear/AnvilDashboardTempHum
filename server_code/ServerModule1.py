@@ -14,7 +14,7 @@ from datetime import datetime
 # Here is an example - you can replace it with your own:
 #
 @anvil.server.callable
-def record_reading(nztime, temperature, humidity):
+def record_reading(temperature, humidity):
   app_tables.readings.add_row(Time=nztime, Temperature=temperature, Humidity=humidity)
 
 @anvil.server.callable
