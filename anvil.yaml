@@ -34,15 +34,15 @@ db_schema:
     client: none
     server: full
     columns:
-    - name: Time
-      admin_ui: {width: 200, order: 0}
-      type: datetime
     - name: Temperature
       admin_ui: {width: 200, order: 1}
       type: number
     - name: Humidity
-      admin_ui: {width: 200, order: 2}
+      admin_ui: {order: 2, width: 200}
       type: number
+    - name: Time
+      admin_ui: {width: 200, order: 3}
+      type: simpleObject
     title: Readings
 startup: {type: form, module: Frame}
 name: Dashboard Temp and Hum
