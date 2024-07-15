@@ -14,7 +14,7 @@ class Humidity(HumidityTemplate):
     # Any code you write here will run before the form opens.
 
   def timer_2t_hum(self, **event_args):
-    """This method is called Every [interval] seconds. Does not trigger if [interval] is 0."""
+    """This method is called Every 2 [interval] seconds. Does not trigger if [interval] is 0."""
     data = anvil.server.call_s('get_data')
 
     #self.temp_plot.data = go.Scatter(x = [r['Time'] for r in data], y = [r['Temperature'] for r in data], fill = 'tozeroy')
