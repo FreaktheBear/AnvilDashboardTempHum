@@ -4,7 +4,9 @@ import anvil.tables.query as q
 from anvil.tables import app_tables
 import anvil.server
 import time
+import pytz
 from datetime import datetime
+
 #
 # This is a server module. It runs on the Anvil server,
 # rather than in the user's browser.
@@ -15,8 +17,9 @@ from datetime import datetime
 #
 @anvil.server.callable
 def record_reading(temperature, humidity, timestamp):
-  
-  app_tables.readings.add_row(Temperature=temperature, Humidity=humidity, Timestamp=timestamp)
+  timezone = pytz.timezone('Pacific/Auckland')
+  dt_object = datetime.fromtimestamp(timestamp, tz=timezone)
+  app_tables.readings.add_row(Temperature=temperature, Humidity=humidity, Time=dt_object)
 
 @anvil.server.callable
 def get_data():
