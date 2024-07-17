@@ -14,8 +14,8 @@ from datetime import datetime
 # Here is an example - you can replace it with your own:
 #
 @anvil.server.callable
-def record_reading(temperature, humidity, timestamp):
-  app_tables.readings.add_row(Temperature=temperature, Humidity=humidity, Timestamp=timestamp)
+def record_reading(temperature, humidity):
+  app_tables.readings.add_row(Temperature=temperature, Humidity=humidity, Timestamp=datetime.now())
 
 @anvil.server.callable
 def get_data():
