@@ -16,10 +16,10 @@ from datetime import datetime
 # Here is an example - you can replace it with your own:
 #
 @anvil.server.callable
-def record_reading(temperature, humidity, timestamp):
-  #timezone = pytz.timezone('Pacific/Auckland')
-  #dt_object = datetime.fromtimestamp(timestamp, tz=timezone)
-  app_tables.readings.add_row(Temperature=temperature, Humidity=humidity, Time=timestamp)
+def record_reading(temperature, humidity, now):
+  timezone = pytz.timezone('Pacific/Auckland')
+  dt_object = datetime.fromtimestamp(now, tz=timezone)
+  app_tables.readings.add_row(Temperature=temperature, Humidity=humidity, Time=dt_object)
 
 @anvil.server.callable
 def get_data():
