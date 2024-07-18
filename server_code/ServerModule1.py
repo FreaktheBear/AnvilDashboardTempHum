@@ -17,9 +17,9 @@ from datetime import datetime
 #
 @anvil.server.callable
 def record_reading(temperature, humidity, timestamp):
-  timezone = pytz.timezone('Pacific/Auckland')
-  dt_object = datetime.fromtimestamp(timestamp, tz=timezone)
-  app_tables.readings.add_row(Temperature=temperature, Humidity=humidity, Time=dt_object)
+  #timezone = pytz.timezone('Pacific/Auckland')
+  #dt_object = datetime.fromtimestamp(timestamp, tz=timezone)
+  app_tables.readings.add_row(Temperature=temperature, Humidity=humidity, Time=timestamp)
 
 @anvil.server.callable
 def get_data():
